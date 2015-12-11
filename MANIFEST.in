@@ -1,0 +1,6 @@
+include cascade_cli/data/config.ini
+include cascade_cli/data/ansible.cfg
+include cascade_cli/data/default.conf.j2
+include cascade_cli/data/drupal.inc
+include cascade_cli/data/logging.conf
+include cascade_cli/data/nginx.default.conf.j2

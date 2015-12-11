@@ -1,0 +1,14 @@
+[cascade]
+cascade.example.com
+
+[webservers]
+production1.example.com ansible_become_pass=yourpass
+production2.example.com ansible_become_pass=yourpass
+staging.example.com ansible_become_pass=yourpass
+development.example.com ansible_become_pass=yourpass
+
+[databases]
+production1.example.com ansible_become_pass=yourpass
+production2.example.com ansible_become_pass=yourpass
+staging.example.com ansible_become_pass=yourpass
+development.example.com ansible_become_pass=yourpass

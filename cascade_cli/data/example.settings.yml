@@ -1,0 +1,81 @@
+webserver:
+  config_path: /etc/httpd/conf.d
+gitlab:
+  url: https://gitlab-cascade.example.com
+  api_key: wJ3LyG17gMnXXhfHTXGR
+jenkins:
+  url: https://admin:yourpass@jenkins-cascade.example.com
+deployhook:
+  url: http://cascade.example.com/deployhook
+roles:
+- key: admin
+  name: Admin
+- key: observer
+  name: Observer
+- key: developer
+  name: Developer
+inventory:
+- group: newex
+  websites:
+  - domain: www.example.com
+    repo: git@gitlab-cascade.example.com:newex/www-example-com.git
+    type: Drupal 7
+    environments:
+      dev:
+        vcs:
+        - branch: bmesh_dev
+        assets: []
+      stage:
+        vcs:
+        - branch: bmesh_stage
+      prod:
+        vcs:
+        - branch: bmesh_prod
+environments:
+  dev:
+    title: Development
+    vcs_machines:
+    - machine: development
+      webroot: /var/www/cascade/dev
+  stage:
+    title: Staging
+    vcs_machines:
+    - machine: staging
+      webroot: /var/www/cascade/stage
+  prod:
+    title: Production
+    vcs_machines:
+    - machine: production1
+      webroot: /var/www/cascade/prod
+    - machine: production2
+      webroot: /var/www/cascade/prod
+machines:
+  development:
+    description: Vagrant
+    fqdn: development.example.com
+    ip: 192.168.205.106
+    services:
+    - name: mysqld
+    title: Development Machine
+  staging:
+    description: Vagrant
+    fqdn: staging.example.com
+    ip: 192.168.205.107
+    services:
+    - name: mysqld
+    title: Staging Machine
+  production1:
+    description: Vagrant
+    fqdn: production1.example.com
+    ip: 192.168.205.110
+    services:
+    - name: mysqld
+    title: Production 1
+  production2:
+    description: Vagrant
+    fqdn: production2.example.com
+    ip: 192.168.205.111
+    services:
+    - name: mysqld
+    title: Production 2
+backdoor: []

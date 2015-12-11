@@ -1,0 +1,44 @@
+#!/usr/bin/expect
+
+spawn /usr/bin/python /var/www/cascade-cli/cascade_cli/cascade_cli.py
+
+expect "Backdoor login" 
+send -- "testuser\n"
+
+expect "Backdoor password"
+send -- "testpass\n"
+
+expect "Option"
+send -- "5\n"
+
+expect "Option"
+send -- "5\n"
+
+expect "site to delete"
+send -- "test.com\n"
+
+expect "Are you sure" 
+send -- "y\n"
+
+expect "Option"
+send -- "3\n"
+
+expect "Domain of site"
+send -- "test.com\n"
+
+expect "On what machine is the site code currently located"
+send -- "development.example.com\n"
+
+expect "Docroot where code is currently located"
+send -- "/var/www/onboarding/test.com/htdocs\n"
+
+expect "Group to put site in"
+send -- "test_group\n"
+
+expect "Site Type"
+send -- "1\n"
+
+expect "Project path name for repo"
+send -- "test-com\n"
+
+interact 

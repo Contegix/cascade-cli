@@ -1,0 +1,36 @@
+<VirtualHost *:80>
+  ServerName {{ environment_name }}.{{ domain }}
+  ServerAlias {{ environment_name }}.{{ domain }}.{{ fqdn }}
+  #ServerAlias {{ domain }}
+  #ServerAlias www.{{ domain }}
+  DocumentRoot {{ webroot }}/{{ domain }}/htdocs
+
+  <Directory {{ webroot }}/{{ domain }}/htdocs>
+        Options All
+        Allow from all
+        AllowOverride All
+  </Directory>
+
+  ErrorLog "|/usr/sbin/cronolog {{ webroot }}/{{ domain }}/logs/%Y/%m/%Y%m%d-error.log"
+  CustomLog "|/usr/sbin/cronolog {{ webroot }}/{{ domain }}/logs/%Y/%m/%Y%m%d-access.log" combined
+</VirtualHost>
+
+#<VirtualHost :443>
+#  ServerName {{ environment_name }}.{{ domain }}
+#  ServerAlias {{ environment_name }}.{{ domain }}.{{ fqdn }}
+#  DocumentRoot {{ webroot }}/{{ domain }}/htdocs
+#
+#  <Directory {{ webroot }}/{{ domain }}/htdocs>
+#        Options All
+#        Allow from all
+#        AllowOverride All
+#  </Directory>
+#
+#  ErrorLog "|/usr/sbin/cronolog {{ webroot }}/{{ domain }}/logs/%Y/%m/%Y%m%d-error.log"
+#  CustomLog "|/usr/sbin/cronolog {{ webroot }}/{{ domain }}/logs/%Y/%m/%Y%m%d-access.log" combined
+#  SSLEngine On
+#  SSLCertificateFile /var/www/certs/{{ domain }}/{{ domain }}.crt
+#  SSLCertificateKeyFile /var/www/certs/{{ domain }}/{{ domain }}.key
+#  SSLCertificateChainFile /var/www/certs/{{ domain }}/{{ domain }}.crt
+#  SSLCipherSuite "ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM"
+#</VirtualHost>
