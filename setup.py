@@ -30,7 +30,7 @@ with open('cascade_cli/__init__.py', 'rb') as f:
 setup(
     name="cascade-cli",
     version=version,
-    url="https://github.com/BlackMesh/cascade-cli", # TODO: Update when published on Github.
+    url="https://github.com/BlackMesh/cascade-cli",
     author="BlackMesh",
     author_email="support@blackmesh.com",
     packages=find_packages(),
